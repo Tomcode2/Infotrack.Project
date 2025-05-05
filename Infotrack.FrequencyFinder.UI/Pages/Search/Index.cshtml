@@ -1,0 +1,66 @@
+﻿@page  
+@model Infotrack.FrequencyFinder.UI.Pages.Search.IndexModel  
+
+@{  
+   ViewData["Title"] = "Searches";  
+}  
+
+<h3 style="float:right">Previous Searches</h3>  
+<br />  
+<br />  
+
+<div class="form-inline mb-3">  
+   <input type="text" class="form-control mr-2" placeholder="Enter search query" asp-for="SearchQuery" />  
+   <select class="form-control mr-2" asp-for="SelectedEngine">  
+       <option value="Google">Google</option>  
+       <option value="Bing">Bing</option>  
+       <option value="Yahoo">Yahoo</option>  
+   </select>  
+   <button type="submit" class="btn btn-primary" asp-page-handler="Search">Search</button>  
+</div>  
+
+<table class="table">  
+   <thead>  
+       <tr>  
+           <th>  
+               Id  
+           </th>  
+           <th>  
+               Query  
+           </th>  
+           <th>  
+               Engine  
+           </th>  
+           <th>  
+               Rank  
+           </th>  
+           <th>  
+               SearchOn  
+           </th>  
+ 
+       </tr>  
+   </thead>  
+   <tbody>  
+       @foreach (var item in Model.Searches)  
+       {  
+           <tr>  
+               <td>  
+                   @Html.DisplayFor(model => item.Id)  
+               </td>  
+               <td>  
+                   @Html.DisplayFor(model => item.SearchQuery)  
+               </td>  
+               <td>  
+                   @Html.DisplayFor(model => item.SearchEngine)  
+               </td>  
+               <td>  
+                   @Html.DisplayFor(model => item.SearchRank)  
+               </td>  
+               <td>  
+                   @Html.DisplayFor(model => item.SearchOn)  
+               </td>  
+                
+           </tr>  
+       }  
+   </tbody>  
+</table>

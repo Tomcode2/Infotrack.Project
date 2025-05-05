@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Infotrack.FrequencyFinder.Web.DTO.SearchDto>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const searchRankings = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(((IEnumerable<dynamic>)@ViewBag.SearchRanks).Select(sr => ((IEnumerable<int>)sr.Ranks).Sum())));
+        const searchRankingsDates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(((IEnumerable<dynamic>)@ViewBag.SearchRanksDates).Select(sr => sr.DatesDataSet)));
+
+        const ctx = document.getElementById('searchRankChart').getContext('2d');
+                  new Chart(ctx, {
+                      type: 'bar',
+                      data: {
+                          labels: searchRankingsDates,
+                          datasets: [{
+                              label: 'InfoTrack Ranking on Google',
+                              data: searchRankings,
+                              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                              borderColor: 'rgba(75, 192, 192, 1)',
+                              borderWidth: 1
+                          }]
+                      },
+                      options: {
+                          plugins: {
+                              legend: {
+                                  display: true,
+                                  position: 'top' // Display the caption (legend) at the bottom
+                              }
+                          },
+                          scales: {
+                              y: {
+                                  beginAtZero: true
+                              }
+                          }
+                      }
+                  });
+    });
+</script>
+
+<h1>Search</h1>
+
+<p class="d-flex align-items-center">
+    <form method="post" asp-controller="Search" asp-action="SaveSearch" class="d-flex align-items-center">
+        <input type="text" id="searchBox" name="SearchQuery" placeholder="Enter search query" class="form-control me-2" style="width: 50%;" required />
+        <select id="searchEngine" name="SearchEngine" class="form-select me-2" style="width: 20%;">
+            @foreach (var engine in ViewBag.SearchEngines)
+            {
+                <option value="@engine.Value">@engine.Text</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <canvas id="searchRankChart" width="400" height="200"></canvas>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SearchQuery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SearchEngine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SearchRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SearchOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SearchBy)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var isRecent = Model.First() == item; // Highlight the most recent entry
+            <tr style="background-color: @(isRecent ? "lightgreen" : "transparent");">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchQuery)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchEngine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchBy)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infotrack.FrequencyFinder.Core\Infotrack.FrequencyFinder.Core.csproj" />
+    <ProjectReference Include="..\Infotrack.FrequencyFinder.Service.Abstraction\Infotrack.FrequencyFinder.Service.Abstraction.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+</Project>

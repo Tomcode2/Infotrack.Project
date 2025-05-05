@@ -13,12 +13,12 @@
 <!-- wp:paragraph -->
 <p>Here is a list of features provided in this project.</p>
 <!-- /wp:paragraph -->
-Features:
+<h2>Features:</h2>
 > Searching Functionality
 > Selection of Search Engine (Google - limited to 100 hits per day, Bing, Yahoo)
 > Grid display history and current search and ranks
 > Recent search highlighted in green
-> Graph - Stats for Infotrack search rankings
+> Graph - Stats for Infotrack rankings
 > TestCases
 
 <h2>Preparations before running the project</h2>
@@ -26,6 +26,7 @@ Download the solution and all its libraries </br>
 Use Manage Nuget (if needed) </br>
 Set Connection String at Location : Inside Infotrack.FrequencyFinder.Web > appsettings.json > ConnectionStrings > InfoTrackConnString (this key is used for SQL Express database connection)</br>
 Run Database Schema and Initial dataset : Inside Infotrack.FrequencyFinder.Data > Migrations > tbl_Search_Script.sql</br>
+Please make sure Infotrack.FrequencyFinder.Web Project set as <b>Startup Project</b>
 
 
 

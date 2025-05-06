@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Infotrack.FrequencyFinder.Api\Infotrack.FrequencyFinder.Api.csproj" />
     <ProjectReference Include="..\Infotrack.FrequencyFinder.Web\Infotrack.FrequencyFinder.Web.csproj" />
   </ItemGroup>
 

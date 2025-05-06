@@ -5,9 +5,9 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->
-<ul><li>Onion Architecture</li><li>Entity Framework Core</li><li>.NET Core Library / .NET Standard Library / ASP.NET Core / WebApi / MVC UI </li><li>Swagger</li><li>AutoMapper</li><li>Razor</li>
+<ul><li>Onion Architecture</li><li>Entity Framework Core</li><li>.NET Core Library / .NET Standard Library / ASP.NET Core / WebApi / MVC </li><li>Swagger</li><li>AutoMapper</li><li>Razor</li>
 <li>Javascript/JQuery</li><li>Bootstrap</li><li>Database Operations</li><li>Dependency Injection</li><li>Fluent Validation</li><li>Unit Of Work</li><li>Factory Pattern</li><li>Repository Pattern</li>
-<li>OOP Principle</li><li>SOLID Principle</li><li>SQL Database</li></ul>
+<li>OOP Principles</li><li>SOLID Principles</li><li>SQL Database</li></ul>
 <!-- /wp:list -->
 
 <!-- wp:paragraph -->
